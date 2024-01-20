@@ -1,0 +1,235 @@
+.accueil {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 120vh; /* Utilise toute la hauteur de la fenêtre */
+}
+
+.accueil{
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../Assets/home4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.left-div,
+.right-div {
+  width: 50%; /* Répartir l'espace en deux */
+  text-align: center; /* Centrer le contenu horizontalement */
+}
+.left-div {
+  flex: 1;
+}
+
+.right-div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.6;
+}
+
+h1 {
+  margin: 0;
+  font-size: 90px;
+  color: #fbfbfb;
+  text-shadow: 2px 2px 4px rgba(255, 252, 252, 0.3);
+  letter-spacing: 2px;
+  font-family: "Helvetica", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color 0.3s ease-in-out;
+}
+
+h1:hover {
+  color: #fdfdfd;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #5c4949;
+  border-radius: 8px;
+  opacity: 0.8;
+}
+
+img {
+  width: 600px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.right-div img {
+  transition: transform 0.05s ease-in-out;
+}
+
+.right-div img:hover {
+  transform: scale(1.03);
+}
+  .input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+button {
+  display: inline-block;
+  padding: 20px 50px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #0800ff;
+}
+.select-input {
+  width: 100%;
+  height: auto;
+}
+.select-input select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #333;
+  width: 100%;
+}
+
+.select-input select:focus {
+  border: none;
+  outline: none;
+}
+@media (max-width: 768px) {
+  .accueil {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-div,
+  .right-div {
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;  
+  padding: 0;
+}
+
+/* Body */
+body {
+  font-family: Arial, sans-serif; 
+}
+
+/* Navigation */
+nav {
+  background-color: #030104;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between ;
+  padding: 20px;
+}
+
+.nav img {
+  height: 40px;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.nav li:last-child {
+  margin-right: 0px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px 25px 5px 25px;
+  transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+  background-color: #bc76df;
+}
+/* Styles pour les écrans de petite taille (mobile) */
+@media (max-width: 576px) {
+  .accueil {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .left-div,
+  .right-div {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* Styles pour les écrans de taille moyenne (tablettes) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .accueil {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+}
+
+/* Styles pour les écrans de grande taille (ordinateurs de bureau) */
+@media (min-width: 993px) {
+  .accueil {
+    padding: 40px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+}
