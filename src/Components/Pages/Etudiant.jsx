@@ -5,7 +5,7 @@ import modifier from '../Assets/modifier.png';
 import supprimer from '../Assets/supprimer.png';
 import './etudiant.css';
 function Etudiant() {
-    const url ='http://192.168.43.107:8001';
+    const url ='http://gestinscript.pythonanywhere.com';
     const [etu, setetu] = useState([]);
 
   useEffect(() => {

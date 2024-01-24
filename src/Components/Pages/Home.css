@@ -23,6 +23,24 @@
   flex: 1;
 }
 
+.accueil .left-div .tels {
+  padding: 10px;
+  max-width: 350px;
+  align-content: center;
+  border-radius: 25px 25px 25px 25px;
+}
+
+.accueil .left-div .tel button{
+  max-width: 350px;
+  border-radius: 25px 25px 25px 25px;
+  background-color: #0800ff;
+}
+ccueil .left-div .tel img{
+  height: 50px;
+  width: 100px;
+}
+
+
 .right-div {
   flex: 1;
   display: flex;
@@ -35,7 +53,6 @@ h1 {
   margin: 0;
   font-size: 90px;
   color: #fbfbfb;
-  text-shadow: 2px 2px 4px rgba(255, 252, 252, 0.3);
   letter-spacing: 2px;
   font-family: "Helvetica", sans-serif;
   text-transform: uppercase;

@@ -11,7 +11,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function LoginSing() {
-  const url ='http://192.168.43.107:8001';
+  const url ='http://gestinscript.pythonanywhere.com';
   const [matricule, setMatricule] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();

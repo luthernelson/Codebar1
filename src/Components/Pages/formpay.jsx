@@ -8,7 +8,8 @@ import {
 //import { StripeCardNumberElement } from '@stripe/stripe-js'
 import { useState } from "react";
 import './formpay.css';
-function Formpayer() {
+import axios from 'axios';
+function Formpayer(props) {
   const stripe = useStripe();
   const elements = useElements();
   const [name, setName] = useState("");
@@ -35,6 +36,9 @@ function Formpayer() {
     try {
       const token = await generateStripeToken();
       alert(token?.id);
+      const response = await axios.post(url+ '/Paiement/',{data:token, amont:props.montant});
+      console.log('paiement valide', response.data)
+      console.log(props.montant);
     } catch (error) {
       console.log("erreur :", error);
     }
@@ -48,19 +52,19 @@ function Formpayer() {
           <label className="label" htmlFor="CardNumber">
             Card Number
           </label>
-          <CardNumberElement className="card" id="cardNumber" />
+          <CardNumberElement className="" id="cardNumber" />
         </div>
         <div className="labels">
           <label className="label" htmlFor="cardExp">
             Exp
           </label>
-          <CardExpiryElement className="card" id="cardExp" />
+          <CardExpiryElement className="" id="cardExp" />
         </div>
         <div className="labels">
           <label className="label" htmlFor="cvc">
             CVC
           </label>
-          <CardCvcElement className="card" id="cvc" />
+          <CardCvcElement className="" id="cvc" />
         </div>
         <div className="labels">
           <label className="label" htmlFor="name">

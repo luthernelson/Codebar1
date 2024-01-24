@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import email_icon from '../Assets/hero-bg.png';
+import telecharger from '../Assets/telecharger.png';
 //import home1_icon from '../Assets/home1.jpg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Home() {
-  const url ='http://192.168.43.107:8001';
+  const url ='http://gestinscript.pythonanywhere.com';
   const [matricule, setMatricule] = useState('');
   const [motif, setMotif] = useState('');
   const [montant, setMontant] = useState('');
@@ -29,7 +30,7 @@ function Home() {
     try {
       const response = await axios.post(url+ '/Paiement/',{idetudiant:matricule, motif_paiement:motif, montant_paiement:montant});
         console.log('paiement valide', response.data)
-        navigate('/formpay')
+        navigate('/formpay/'+response.data.id)
     } catch (error) {
       console.log('Erreur :', error);
     }
@@ -57,6 +58,14 @@ function Home() {
   <div className="accueil">
       <div className="left-div">
         <h1>Bienvenue sur la page de paiement</h1>
+        <br></br>
+        <div className="tels">
+          <div className="tel"><Link to={"http://gestinscript.pythonanywhere.com/media/db.xlsx"}><button><img src={telecharger} alt="" />Fichier Excel</button></Link></div>
+        </div>
+        <br></br>
+        <div className="tels">
+          <div className="tel"><Link to={"http://gestinscript.pythonanywhere.com/refresh1"}><button>Actualiser</button></Link></div>
+        </div>
       </div>
       <div className="right-div">
         <div className="card">

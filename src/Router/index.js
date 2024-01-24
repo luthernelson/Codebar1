@@ -13,7 +13,7 @@ function MyRoute(){
         <Routes>
             <Route  path="/" element={<LoginSing/>}  />
             <Route  path="/Home" element={<Home/>}  />
-            <Route  path="/formpay" element={<PayStripForm/>}  />
+            <Route  path="/formpay/:id" element={<PayStripForm/>}  />
             <Route path="/Etudiant" element={<Etudiant />}  />
             <Route path="/User" element={<User />} />
             <Route path="/Etudiant/Formulaire" element={<Formulaire />} />
