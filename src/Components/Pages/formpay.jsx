@@ -10,6 +10,7 @@ import { useState } from "react";
 import './formpay.css';
 import axios from 'axios';
 function Formpayer(props) {
+  const url ='http://gestinscript.pythonanywhere.com';
   const stripe = useStripe();
   const elements = useElements();
   const [name, setName] = useState("");
@@ -52,19 +53,19 @@ function Formpayer(props) {
           <label className="label" htmlFor="CardNumber">
             Card Number
           </label>
-          <CardNumberElement className="" id="cardNumber" />
+          <CardNumberElement className="payer" id="cardNumber" />
         </div>
         <div className="labels">
           <label className="label" htmlFor="cardExp">
             Exp
           </label>
-          <CardExpiryElement className="" id="cardExp" />
+          <CardExpiryElement className="payer" id="cardExp" />
         </div>
         <div className="labels">
           <label className="label" htmlFor="cvc">
             CVC
           </label>
-          <CardCvcElement className="" id="cvc" />
+          <CardCvcElement className="payer" id="cvc" />
         </div>
         <div className="labels">
           <label className="label" htmlFor="name">

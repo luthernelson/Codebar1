@@ -58,7 +58,11 @@
   .btn-btn:hover {
     background-color: #0056b3;
   }
-  
+  .payer {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
   @media screen and (max-width: 480px) {
     .pay {
       width: 100%;

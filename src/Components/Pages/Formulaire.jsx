@@ -1,32 +1,24 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import './Formulaire.css';
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-//import { Link } from 'react-router-dom';
-//import LoginSing from './Components/LoginSing/LoginSin';
-// import Home from './Components/Pages/Home';
-//import MyRoute from './Router';
-//import Navbar from './Components/Composent/Navbar';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Formulaire.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
-//<Navbar />; 
-//<MyRoute />
 function Formulaire() {
-  const url ='http://192.168.43.107:8001';
-  const [matricule, setMatricule] = useState('');
-  const [nom, setNom] = useState('');
-  const [prenom, setPrenom] = useState('');
-  const [adresse, setAdresse] = useState('');
-  const [email, setEmail] = useState('');
-  const [datenaissance, setDatenaiss] = useState('');
-  const [sexe, setSexe] = useState('');
-  const [nationalite, setNationalite] = useState('');
-  const [idfiliere, setIdfiliere] = useState('');
-  const [telephone, setTelephone] = useState('');
-  const [motpasse, setMotpasse] = useState('');
-  
+  const url = "http://gestinscript.pythonanywhere.com";
+  const [matricule, setMatricule] = useState("");
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [email, setEmail] = useState("");
+  const [datenaissance, setDatenaiss] = useState("");
+  const [sex, setSexe] = useState("");
+  const [nationalite, setNationalite] = useState("");
+  const [idfilier, setIdfilier] = useState([]);
+  const [idfiliere, setIdfiliere] = useState([]);
+  const [telephone, setTelephone] = useState("");
+  const [motpasse, setMotpasse] = useState("");
+
   const navigate = useNavigate();
 
   const handleMatriculeChange = (event) => {
@@ -54,7 +46,7 @@ function Formulaire() {
     setNationalite(event.target.value);
   };
   const handleIdfiliereChange = (event) => {
-    setIdfiliere(event.target.value);
+    setIdfilier(event.target.value);
   };
   const handleTelephoneChange = (event) => {
     setTelephone(event.target.value);
@@ -64,93 +56,168 @@ function Formulaire() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const response = await axios.post(url+ '/Etudiant/',{matricule:matricule,nom:nom,prenom:prenom,adresse:adresse
-      ,email:email,dateNaiss:datenaissance,sexe:sexe,nationalite:nationalite,idfiliere:idfiliere,tel:telephone,mdp:motpasse});
-        console.log('Etudiant ajouter avec success', response.data)
-        navigate('/Etudiant')
+      const response = await axios.post(url + "/Etudiant/", {
+        id: 1,
+        matricule: matricule,
+        nom: nom,
+        prenom: prenom,
+        adresse: adresse,
+        email: email,
+        dateNaiss: datenaissance,
+        sexe: sex,
+        nationalite: nationalite,
+        idfiliere: 1,
+        tel: telephone,
+        mdp: motpasse,
+      });
+      console.log("Etudiant ajoute avec succes", response.data);
+      navigate("/Etudiant");
     } catch (error) {
-      console.log('Erreur :', error);
+      console.log("Erreur :", error);
     }
   };
+  useEffect(() => {
+    axios
+      .get(url + "/Filiere/")
+      .then((response) => {
+        setIdfiliere(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }, []);
+
   return (
     <div>
-        <div className= 'container'>
-
-          <form action="" className= "mx-auto mt-40" method="post"onSubmit={handleSubmit}>
-            <div className=" mx-auto text-3xl- text-primary">
-              <h2> Formulaire d'inscription </h2>
-            </div>
-            <div>
-              <label htmlFor="">Matricule</label>
-              <input type="text" className="form-control"  value={matricule}
-                  onChange={(handleMatriculeChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Nom</label>
-              <input type="text" className="form-control"  value={nom}
-                  onChange={(handleNomChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Prenom</label>
-              <input type="text" className="form-control"value={prenom}
-                  onChange={(handlePrenomChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Adresse</label>
-              <input type="text" className="form-control"value={adresse}
-                  onChange={(handleAdresseChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Email</label>
-              <input type="Email" className="form-control"value={email}
-                  onChange={(handleEmailChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Date de naissance</label>
-              <input type="Date" className="form-control"value={datenaissance}
-                  onChange={(handleDatenaissChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Sexe</label>
-              <select className="form-control"value={sexe}
-                  onChange={(handleSexeChange)}>
-                <option className="form-control">Masculin</option>
-                <option className="form-control">Feminin</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="">Nationalite</label>
-              <input type="text" className="form-control"value={nationalite}
-                  onChange={(handleNationaliteChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Idfiliere</label>
-              <input type="text" className="form-control"value={idfiliere}
-                  onChange={(handleIdfiliereChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Telephone</label>
-              <input type="Tel" className="form-control"value={telephone}
-                  onChange={(handleTelephoneChange)}/>
-            </div>
-            <div>
-              <label htmlFor="">Mot de passe</label>
-              <input type="password" className="form-control"value={motpasse}
-                  onChange={(handleMotpassChange)}/>
-            </div>
-            <div>
-
-              <button className="btn btn-outline-primary btn-block mt-3" type="submit">
-                S'inscrire
-              </button>
-            </div>
-          </form>   
-
-        </div>
+      <div className="container">
+        <form
+          action=""
+          className="mx-auto mt-40"
+          method="post"
+          onSubmit={handleSubmit}
+        >
+          <div className="mx-auto text-3xl- text-primary">
+            <h2> Formulaire d'inscription </h2>
+            <div className="formulaire-barre"></div>
+            {/* Reste du code du formulaire */}
+          </div>
+          <div>
+            <label htmlFor="">Matricule</label>
+            <input
+              type="text"
+              className="form-control"
+              value={matricule}
+              onChange={handleMatriculeChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Nom</label>
+            <input
+              type="text"
+              className="form-control"
+              value={nom}
+              onChange={handleNomChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Prenom</label>
+            <input
+              type="text"
+              className="form-control"
+              value={prenom}
+              onChange={handlePrenomChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Adresse</label>
+            <input
+              type="text"
+              className="form-control"
+              value={adresse}
+              onChange={handleAdresseChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Email</label>
+            <input
+              type="Email"
+              className="form-control"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Date de naissance</label>
+            <input type="date"
+              className="form-control"
+              value={datenaissance}
+              onChange={handleDatenaissChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Sexe</label>
+            <select
+              className="form-control"
+              value={sex}
+              onChange={handleSexeChange}
+            >
+              <option value="">Sélectionnez le sexe</option>
+              <option value="F">F</option>
+              <option value="M">M</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="">Nationalité</label>
+            <input
+              type="text"
+              className="form-control"
+              value={nationalite}
+              onChange={handleNationaliteChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Filiere</label>
+            <select
+              className="form-control"
+              value={idfilier}
+              onChange={handleIdfiliereChange}
+            >
+              {idfiliere.map((filiere) => (
+                <option key={filiere.id}>
+                  {filiere.nom}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="">Téléphone</label>
+            <input
+              type="text"
+              className="form-control"
+              value={telephone}
+              onChange={handleTelephoneChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Mot de passe</label>
+            <input
+              type="password"
+              className="form-control"
+              value={motpasse}
+              onChange={handleMotpassChange}
+            />
+          </div>
+          <div className="text-center">
+            <button className="btn btn-primary" type="submit">
+              S'inscrire
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default Formulaire
+export default Formulaire;

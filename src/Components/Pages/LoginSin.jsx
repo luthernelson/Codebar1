@@ -33,7 +33,7 @@ function LoginSing() {
     
       if (response.data.result === false) {
         // L'authentification a échoué, affichez un message d'erreur ou effectuez une autre action
-        console.log('Échec de l\'authentification');
+        alert("Matricule ou mot de passe incorrect");
       } else {
         // L'authentification a réussi, traitez ici la réponse de l'API
         console.log('Données de l\'utilisateur connecté :', response.data);

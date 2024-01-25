@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import email_icon from '../Assets/hero-bg.png';
-import telecharger from '../Assets/telecharger.png';
 //import home1_icon from '../Assets/home1.jpg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -20,9 +19,6 @@ function Home() {
   };
   const handleMotifChange = (event) => {
     setMotif(event.target.value);
-  };
-  const handleMontantChange = (event) => {
-    setMontant(event.target.value);
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,7 +42,6 @@ function Home() {
             <ul>
               <li>< Link to="/Home">HOME</Link></li>
               <li>< Link to="/Etudiant">ETUDIANT</Link></li>
-              <li>< Link to="/user">USER</Link></li>
             </ul>
           </div>
         </div>
@@ -58,14 +53,6 @@ function Home() {
   <div className="accueil">
       <div className="left-div">
         <h1>Bienvenue sur la page de paiement</h1>
-        <br></br>
-        <div className="tels">
-          <div className="tel"><Link to={"http://gestinscript.pythonanywhere.com/media/db.xlsx"}><button><img src={telecharger} alt="" />Fichier Excel</button></Link></div>
-        </div>
-        <br></br>
-        <div className="tels">
-          <div className="tel"><Link to={"http://gestinscript.pythonanywhere.com/refresh1"}><button>Actualiser</button></Link></div>
-        </div>
       </div>
       <div className="right-div">
         <div className="card">
@@ -91,9 +78,20 @@ function Home() {
               </div>
               <div className="input">
                 <img src={email_icon} alt="" />
-                <input type="number" placeholder="entrez le montant"
-                value={montant}
-                onChange={(handleMontantChange)}/>
+                <input
+  onChange={(e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      setMontant(value);
+    }
+  }}
+  value={montant}
+  className="input"
+  id="montant"
+  required
+  placeholder="Entrer le montant"
+  pattern="[0-9]*"
+/>
               </div>
             </div>
             <div className="submit-content">

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import telecharger from '../Assets/telecharger.png';
 import axios from 'axios';
-import modifier from '../Assets/modifier.png';
-import supprimer from '../Assets/supprimer.png';
 import './etudiant.css';
 function Etudiant() {
     const url ='http://gestinscript.pythonanywhere.com';
@@ -25,8 +24,9 @@ function Etudiant() {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="card-header">
-                            <h3> Liste Etudiants <Link to="./Formulaire" className="btn btn-primary float-end"> Add Etudiant</Link></h3>
+                            <h3> Liste Etudiants</h3>
                         </div> 
+                        <Link to="./Formulaire" className="btn btn-primary float-end"> Add Etudiant</Link>
                         <div className="card-body">
                             <table className="table table-striped">
                                 <thead>
@@ -39,8 +39,6 @@ function Etudiant() {
                                         <td>Date Naissance</td>
                                         <td>E-mail</td>
                                         <td>Telephone</td>
-                                        <td colSpan={2}>Action</td>
-                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,8 +52,6 @@ function Etudiant() {
                       <td>{etudiant.dateNaiss}</td>
                       <td>{etudiant.email}</td>
                       <td>{etudiant.tel}</td>
-                      <td><img src={modifier} alt="" />Editer</td>
-                      <td><img src={supprimer} alt="" />Delete</td>
                     </tr>
                   ))}
                 </tbody>      
@@ -64,6 +60,13 @@ function Etudiant() {
                     </div>
                 </div>
             </div>
+            <div className="tels">
+          <div className="tel"><Link  to={"http://gestinscript.pythonanywhere.com/media/db.xlsx"}><button><img src={telecharger} alt="" />Fichier Excel</button></Link></div>
+        </div>
+        <br></br>
+        <div className="tels">
+          <div className="tel"><Link to={"http://gestinscript.pythonanywhere.com/refresh1"}><button>Actualiser</button></Link></div>
+        </div>
         </div>
     );
 

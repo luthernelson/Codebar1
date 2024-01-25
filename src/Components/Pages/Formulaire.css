@@ -1,0 +1,17 @@
+.formulaire {
+    max-width: 600px; /* Augmentation de la largeur maximale du formulaire */
+    margin: 0 auto; /* Centrer le formulaire horizontalement */
+  }
+.formulaire-barre {
+    background-color: #ccc;
+    height: 2px;
+    margin-bottom: 20px;
+    padding: 5px 0; /* Ajout du padding */
+  }
+  
+  .formulaire-titre {
+    margin-bottom: 20px;
+  }
+  .formulaire-champ {
+    width: 100%; /* Augmentation de la largeur des champs à 100% */
+  }
